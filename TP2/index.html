@@ -1,0 +1,111 @@
+<!--
+Nom : Jdaini Mohammed Ali
+Matricule : JDAM21069406
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP2</title>
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+</head>
+<body>
+
+<header>
+    <div class="navigation">
+        <div class="accueil">
+            <nav>
+                <ul>
+                    <li><img class="logo" src="logo/logo.png" alt="logo"></li>
+                    <li><a href="index.html">Acceuil</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<h2>Bienvenu dans notre site d'assurance auto</h2>
+
+<div id="text-principal">
+    <p>Nous allons vous posez quelques questions pour être sûr de votre confirmité</p>
+</div>
+
+
+<div class="block-forme">
+    <form id="formulaire">
+        <div id="genre" class="input genre">
+            <label for="options">Quel est votre genre : </label>
+            <select id="options">
+                <option disabled selected></option>
+                <option value="homme">Homme</option>
+                <option value="femme">Femme</option>
+                <option value="non-binaire">Non-binaire</option>
+            </select>
+        </div>
+        <div class="input" id="age">
+            <label for="age-input">Quel est votre âge : </label>
+            <!--            onchange="showNextInput(this,'vehicule')"-->
+            <input type="number" id="age-input">
+        </div>
+
+        <div class="input" id="vehicule">
+            <!--            onchange="showNextInput(this,'fabrication')"-->
+            <label for="valeur-vehicule">Quelle est la valeur d'achat de votre véhicule? </label>
+            <input type="number" id="valeur-vehicule">
+        </div>
+
+        <div class="input" id="fabrication">
+            <!--            onchange="showNextInputReclamation()"-->
+            <label for="annee-fabrication">Quelle est la date de fabrication de votre véhicule? </label>
+            <input type="date" id="annee-fabrication">
+        </div>
+
+        <div id="reclamation">
+            <div class="input" id="text-reclamation">
+                <p>Avez-vous fait des réclamations d'assurance auto dans les 6 dernières
+                    années?</p>
+            </div>
+            <div class=" reclamation-six input " id="input-oui">
+                <!--                onchange="showNextInput(this,'chiffre-reclamation')"-->
+                <label for="reclamation-oui"> oui </label>
+                <input type="radio" id="reclamation-oui" value="oui" name="reclamation-six-mois">
+            </div>
+            <div class="reclamation-six input " id="input-non">
+                <!--                onchange="showNextInput(this,'chiffre-reclamation')"-->
+                <label for="reclamation-non"> non </label>
+                <input type="radio" id="reclamation-non" value="non" name="reclamation-six-mois">
+            </div>
+        </div>
+
+        <div class="input" id="chiffre-reclamation">
+            <label for="reclamations">Combien de réclamations avez-vous faites? </label>
+            <input type="number" id="reclamations">
+        </div>
+
+        <div class="input xreclamation" id="reclamations-montant">
+        </div>
+
+        <div class="input" id="buttons">
+            <button type="button" id="calcule">Calcule</button>
+        </div>
+
+    </form>
+</div>
+
+
+<div class="block-forme" id="resultat">
+    <p>Bonjour cher client, merci de votre intérêt pour nos services d'assurance.</p>
+    <p class="margin-text">Le montant de votre assurance annuelle est : <span id="prix-par-annee"></span></p>
+    <p class="margin-text">Le montant de votre assurance mensuelle est : <span id="prix-par-mois"></span></p>
+
+    <button id="button-reset" type="reset">Faire une nouvelle soumission</button>
+
+</div>
+
+<script src="js/javascript.js"></script>
+</body>
+
+</html>

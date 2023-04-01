@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Free travel</title>
+    <link rel="stylesheet" href="../css/css.css">
+</head>
+<body>
+<header>
+
+    <div class="navigation">
+
+        <a href="index.html"><img src="../images/logos/logo.png" alt="logo" class="logo"></a>
+        <nav>
+
+            <ul class="liste-navigation">
+                <li><a href="index.html">Acceuil</a></li>
+                <li><a href="circruits.html">Circuits</a></li>
+                <li><a href="plainte.html">Plainte</a></li>
+                <li><a href="apropos.html">A propos</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<h3> Plainte : </h3>
+
+<div class="text-principal">
+    <p>Bienvenue sur notre page des plaintes. Nous sommes sincèrement désolés que votre expérience
+        de voyage n'ait pas été à la hauteur de vos attentes. Nous sommes là pour vous aider à résoudre tout problème
+        que
+        vous avez rencontré et pour vous assister dans la mesure de nos capacités.
+
+        Nous prenons toutes les plaintes au sérieux et nous sommes engagés à offrir un service de qualité supérieure à
+        nos
+        clients. Nous vous encourageons à nous contacter dès que possible pour discuter de votre problème et nous ferons
+        tout ce qui est en notre pouvoir pour trouver une solution satisfaisante.</p>
+</div>
+
+
+<form method="post" action="#">
+
+
+    <div>
+        <label for="nom">Entrez votre nom : </label>
+        <input type="text" id="nom" placeholder="Entez votre nom">
+    </div>
+
+    <div>
+        <label for="email">Entrez votre email : </label>
+        <input type="text" id="email" placeholder="Entrez votre adresse ">
+    </div>
+
+    <p class="type-plainte">Type de plainte</p>
+    <div>
+        <label for="facturation">Facturation</label>
+        <input id="facturation" name="plainte" type="radio" value="Facturation">
+    </div>
+
+    <div>
+        <label for="accident">Accident</label>
+        <input id="accident" name="plainte" type="radio" value="Facturation">
+    </div>
+
+    <div>
+        <label for="harcelement">Harcelement</label>
+        <input id="harcelement" name="plainte" type="radio" value="Facturation">
+    </div>
+
+    <div class="text-area">
+        <label for="text-plainte">Autre</label>
+        <textarea id="text-plainte" name="plainte" placeholder="Veuillez décrire la situation "></textarea>
+    </div>
+
+    <button class="button-reservation button-plainte" type="reset">Vider les champs</button>
+    <button class="button-reservation button-plainte" type="submit">Envoyer votre plainte</button>
+
+
+</form>
+
+
+</body>
+</html>
