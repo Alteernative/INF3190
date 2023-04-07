@@ -1,0 +1,10 @@
+html {
+    background-color: rgba(40, 44, 52, 0.75);
+    margin: 5rem 0 0 5rem;
+    font-family: Roboto, sans-serif;
+    color: #e8e9ef;
+}
+
+.introduction{
+    margin: 2em 0 0 2em;
+}
