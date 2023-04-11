@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>TP3 adoption</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/css.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+</head>
+<body>
+<header>
+    <div class="navigation">
+        <div>
+            <nav>
+                <ul>
+                    <li><a href="/">Acceuil</a></li>
+                </ul>
+                <form action="/recherche" method="POST">
+
+                    <label>
+                        <input type="text" name="recherche" placeholder="...">
+                    </label>
+                    <button class="button">Recherche</button>
+                </form>
+            </nav>
+        </div>
+    </div>
+</header>
+{% block content %} {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<div class="principale">
+    <h2>Tres bon choix</h2>
+
+
+    <div class="animaux">
+
+        <div class="conteneur">
+            <p class="race">{{ animal.get('race') }} : </p>
+            <ul>
+                <li>{{ animal.get('nom') }}</li>
+                <li>{{ animal.get('description') }}</li>
+            </ul>
+            <div class="button-div">
+                <button class="button " value="{{animal.get('nom')}}">{{animal.get('nom')}}</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

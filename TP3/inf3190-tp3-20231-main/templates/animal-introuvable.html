@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="principale">
+    <h2>Oups...</h2>
+    <div class="introduction">
+        <p>Nous vous proposons 2 animaux qui pourraient vous intéresser</p>
+    </div>
+</div>
+<div class="principale">
+<div class="animaux">
+
+    {% for animal in animals %}
+    <div class="conteneur">
+        <p class="race">{{ animal.get('race') }} : </p>
+        <ul>
+            <li>{{ animal.get('nom') }}</li>
+            <li>{{ animal.get('description') }}</li>
+        </ul>
+        <div class="button-div">
+            <form action="/animal" method="POST">
+                <button class="button" name="animal" value="{{animal.get('nom')}}">{{animal.get('nom')}}</button>
+            </form>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+</div>
+
+{% endblock %}

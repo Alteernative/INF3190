@@ -1,24 +1,46 @@
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/css.css')}}">
-</head>
-<h1>Bienvenu dans notre site d'assurance auto</h1>
+{% extends "layout.html" %}
+{% block content %}
 
-<body>
 
-<div class="introduction">
+<div class="principale">
+    <h1>Bienvenu dans notre site d'adoption</h1>
 
-    <p>
-        Nous sommes ravis de vous accueillir dans notre communauté dédiée à trouver des foyers aimants pour les animaux
-        de compagnie qui ont besoin d'une nouvelle famille.
+    <div class="introduction">
 
-        Notre mission est de faciliter les adoptions d'animaux de compagnie en créant des liens durables entre les
-        animaux et les familles d'accueil. Nous sommes passionnés par les animaux et nous nous engageons à faire en
-        sorte que chaque animal trouve la famille qui lui convient le mieux.
+        <p>
+            Nous sommes ravis de vous accueillir dans notre communauté dédiée à trouver des foyers aimants pour les
+            animaux
+            de compagnie qui ont besoin d'une nouvelle famille.
 
-        Sur notre site, vous pourrez parcourir une grande variété d'animaux de compagnie à adopter, tels que des chiens,
-        des chats, bien d'autres encore.
-    </p>
+            Notre mission est de faciliter les adoptions d'animaux de compagnie en créant des liens durables entre les
+            animaux et les familles d'accueil. Nous sommes passionnés par les animaux et nous nous engageons à faire en
+            sorte que chaque animal trouve la famille qui lui convient le mieux.
 
+            Sur notre site, vous pourrez parcourir une grande variété d'animaux de compagnie à adopter, tels que des
+            chiens,
+            des chats, bien d'autres encoreee.
+        </p>
+        <p>Voici une selection de 5 animaux aleatoire que vous pouvez adopter : </p>
+
+    </div>
+
+    <div class="animaux">
+
+
+        {% for animal in animaux %}
+        <div class="conteneur">
+            <p class="race">{{ animal.get('race') }} : </p>
+            <ul>
+                <li>{{ animal.get('nom') }}</li>
+                <li>{{ animal.get('description') }}</li>
+            </ul>
+            <div class="button-div">
+                <form action="/animal" method="POST">
+                    <button class="button" name="animal" value="{{animal.get('nom')}}">{{animal.get('nom')}}</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
-
-</body>
+{% endblock %}
