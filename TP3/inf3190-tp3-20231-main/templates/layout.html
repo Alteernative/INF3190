@@ -8,20 +8,27 @@
 <body>
 <header>
     <div class="navigation">
-        <div>
-            <nav>
-                <ul>
-                    <li><a href="/">Acceuil</a></li>
-                </ul>
-                <form action="/recherche" method="POST">
 
-                    <label>
-                        <input type="text" name="recherche" placeholder="...">
-                    </label>
-                    <button class="button">Recherche</button>
-                </form>
-            </nav>
+        <div class="index">
+            <a href="/">Acceuil</a>
         </div>
+        <div class="recherche">
+
+
+            <form action="/recherche" method="POST">
+                <label>
+                    <input class="input-recherche" type="text" name="recherche" placeholder="...">
+                </label>
+                <button class="button">Recherche</button>
+            </form>
+        </div>
+
+        <div class="mise-adoption">
+            <label>Mise en adoption</label>
+            <button>+</button>
+        </div>
+
+
     </div>
 </header>
 {% block content %} {% endblock %}

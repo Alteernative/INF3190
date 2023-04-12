@@ -6,18 +6,23 @@
     <h2>Tres bon choix</h2>
 
 
-    <div class="animaux">
-
-        <div class="conteneur">
+    <div class="animaux page-animal">
+        <div>
+            <p>Voici les informations de l'animal </p>
+        </div>
+        <div class="conteneur conteneur-animal">
             <p class="race">Race : {{ animal.get('race') }} </p>
             <ul>
-                <li>{{ animal.get('nom') }}</li>
-                <li>{{ animal.get('description') }}</li>
+                <li>Nom : {{ animal.get('nom') }}</li>
+                <li>Age : {{ animal.get('age') }}</li>
+                <li>Description : {{ animal.get('description') }}</li>
+                <li>Courriel : <a href="{{ animal.get('courriel') }}"> {{ animal.get('courriel') }}</a></li>
+                <li>Adresse : {{ animal.get('adresse') }} {{ animal.get('ville') }} {{ animal.get('cp') }}</li>
             </ul>
-            <div class="button-div">
-                <button class="button " value="{{animal.get('nom')}}">{{animal.get('nom')}}</button>
-            </div>
+            <p> Vous pouvez contacter le guardien de l'animal par courriel</p>
+
         </div>
+
 
     </div>
 
