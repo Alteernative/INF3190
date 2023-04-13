@@ -18,6 +18,7 @@ from flask import render_template
 from flask import g
 from flask import request
 from flask import redirect
+from werkzeug.exceptions import abort
 from database import Database
 
 app = Flask(__name__, static_url_path="", static_folder="static")
@@ -77,19 +78,23 @@ def adopter():
     return redirect('/{}'.format(animal_a_adopter))
 
 
-@app.route('/form')
-def afficher():
-    return render_template('recherche.html')
-
-
 @app.route('/<nom_animal>')
-def adopter_animal(nom_animal):
-
+def afficher_animal(nom_animal):
     for animal in get_liste_animaux():
         if nom_animal == animal.get('nom'):
             return render_template('animal.html', animal=animal)
 
-    return redirect('/')
+    return abort(404)
+
+
+@app.route('/ajouter_animal')
+def ajouter_animal():
+    return render_template('ajouter_animal.html')
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 if __name__ == '__main__':

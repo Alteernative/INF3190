@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div id="formulaire">
+    <form action="" method="POST">
+        <div class="form-nom">
+            <label for="nom">Nom : </label>
+            <input type="text" id="nom" required>
+        </div>
+        <div class="form-espece">
+            <label for="espece">l'espèce : </label>
+            <input type="text" id="espece" required>
+        </div>
+        <div class="form-race">
+            <label for="race">la race: </label>
+            <input type="text" id="race" required>
+        </div>
+        <div class="form-age">
+            <label for="age">l'age : </label>
+            <input type="text" id="age" required>
+        </div>
+        <div class="form-description">
+            <label for="description">Description : </label>
+            <input type="text" id="description" required>
+        </div>
+
+        <div class="form-button">
+            <input type="reset" value="Effacer">
+            <button id="soumettre">Soumettre</button>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

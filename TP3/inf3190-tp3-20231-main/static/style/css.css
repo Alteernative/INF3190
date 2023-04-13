@@ -9,7 +9,7 @@ body {
     margin: 0;
 }
 
-.input-recherche{
+.input-recherche {
     height: 25px;
     border-radius: 12px;
     padding-left: 10px;
@@ -27,7 +27,6 @@ body {
 
 .navigation ul {
     list-style: none;
-
 }
 
 .navigation ul:hover {
@@ -62,7 +61,6 @@ body {
     border: 2px solid #423939;
     border-radius: 20px;
     box-shadow: #564545 0px 5px 15px;
-
 }
 
 .conteneur:hover {
@@ -134,3 +132,21 @@ https://copy-paste-css.com/
     margin-left: 2rem;
 }
 
+.page-introuvable {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    font-size: 4rem;
+}
+
+img {
+    border-radius: 5px;
+    max-height: 100%;
+    max-width: 60%;
+}
+
+#formulaire{
+    margin: auto;
+    border: 2px solid #7c7474;
+    text-align: center;
+}

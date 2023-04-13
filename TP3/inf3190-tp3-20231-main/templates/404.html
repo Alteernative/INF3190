@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="page-introuvable">
+    <p>La page que vous recherche est introuvable :/</p>
+
+    <div class="erreur-img">
+        <img src="{{url_for('static', filename='img/404.jpg')}}" alt="logo-404">
+    </div>
+
+</div>
+{% endblock %}

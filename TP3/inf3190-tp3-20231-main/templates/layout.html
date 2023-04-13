@@ -12,26 +12,22 @@
         <div class="index">
             <a href="/">Acceuil</a>
         </div>
+        <div class="mise-adoption">
+            <label for="adopter">Adopter</label>
+            <button id="adopter">+</button>
+        </div>
         <div class="recherche">
-
-
             <form action="/recherche" method="POST">
                 <label>
                     <input class="input-recherche" type="text" name="recherche" placeholder="...">
                 </label>
-                <button class="button">Recherche</button>
+                <button id="recherche" class="button">Recherche</button>
             </form>
         </div>
-
-        <div class="mise-adoption">
-            <label>Mise en adoption</label>
-            <button>+</button>
-        </div>
-
-
     </div>
 </header>
 {% block content %} {% endblock %}
+<script src="/js/script.js"></script>
 
 </body>
 </html>

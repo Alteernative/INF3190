@@ -16,17 +16,14 @@
                 <li>Nom : {{ animal.get('nom') }}</li>
                 <li>Age : {{ animal.get('age') }}</li>
                 <li>Description : {{ animal.get('description') }}</li>
-                <li>Courriel : <a href="{{ animal.get('courriel') }}"> {{ animal.get('courriel') }}</a></li>
+                <li>Courriel : <a href="mailto:{{ animal.get('courriel') }}"> {{ animal.get('courriel') }}</a></li>
                 <li>Adresse : {{ animal.get('adresse') }} {{ animal.get('ville') }} {{ animal.get('cp') }}</li>
             </ul>
             <p> Vous pouvez contacter le guardien de l'animal par courriel</p>
 
         </div>
-
-
     </div>
-
-
 </div>
+
 
 {% endblock %}
