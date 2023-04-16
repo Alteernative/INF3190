@@ -145,8 +145,41 @@ img {
     max-width: 60%;
 }
 
-#formulaire{
-    margin: auto;
+
+#formulaire {
+    display: flex;
     border: 2px solid #7c7474;
-    text-align: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 38rem;
+
+}
+
+#formulaire form input {
+    height: 2rem;
+
+}
+
+.alignement {
+    margin: 10px;
+    display: flex;
+    gap: 2rem;
+}
+
+.alignement * {
+    width: 15rem;
+}
+
+.details span {
+
+    visibility: hidden;
+    color: red;
+    margin: auto;
+
 }

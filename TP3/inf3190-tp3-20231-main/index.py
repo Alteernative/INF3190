@@ -23,6 +23,16 @@ from database import Database
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 
+nom = ""
+espece = ""
+race = ""
+age = ""
+courriel = ""
+description = ""
+adr_civique = ""
+ville = ""
+cp = ""
+
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -90,6 +100,79 @@ def afficher_animal(nom_animal):
 @app.route('/ajouter_animal')
 def ajouter_animal():
     return render_template('ajouter_animal.html')
+
+
+@app.route('/valider_formulaire', methods=['POST'])
+def valider_form():
+    nom = request.form['nom']
+    espece = request.form['espece']
+    race = request.form['race']
+    age = request.form['age']
+    courriel = request.form['courriel']
+    description = request.form['description']
+    adr_civique = request.form['adresse-civique']
+    ville = request.form['ville']
+    cp = request.form['cp']
+
+    remplire_bd()
+
+    return redirect('/remplir_BD')
+
+
+def valider_nom():
+    if "," not in nom and len(nom) < 25:
+        return True
+    return False
+
+
+def valider_espece():
+    if "," not in espece and len(espece) < 25:
+        return True
+    return False
+
+
+def valider_race():
+    if "," not in race and len(race) < 25:
+        return True
+    return False
+
+
+def valider_age():
+    if "," not in age and len(age) < 25 and type(age) == int and 0 < age < 29:
+        return True
+    return False
+
+
+def valider_courriel():
+    regex = re.compile("^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$")
+    if regex.match(courriel):
+        return True
+    else:
+        return False
+
+
+def valider_description():
+    if "," not in description and len(description) < 500:
+        return True
+    else:
+        return False
+
+
+def valider_adresse():
+    if "," in adr_civique or ville or cp:
+        return False
+
+    regex = re.compile("^[a-zA-Z]\d[a-zA-Z]\s?\d[a-zA-Z]\d$")
+    if regex.match(cp):
+        return True
+
+    return False
+
+
+def remplire_bd():
+    if valider_nom(nom) and valider_espece(espece) and valider_race(race) and valider_age(age) \
+            and valider_courriel(courriel) and valider_adresse(adr_civique, ville, cp):
+        print('we gucci')
 
 
 @app.errorhandler(404)

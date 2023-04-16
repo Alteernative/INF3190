@@ -1,35 +1,83 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="principale">
+    <h2>Voici les regles a suivre pour mettre un animal en adoption</h2>
+    <div class="page-animal">
+        <pre>Tous les champs du formulaire sont obligatoires;
+            • Aucun champ ne peut contenir une virgule.
+            • Le nom de l'animal doit avoir entre 3 et 20 caractères.
+            • L'âge doit être une valeur numérique entre 0 et 30.
+            • L'adresse courriel doit avoir un format valide.
+            • L'adresse doit comporter les champs suivants : adresse civique, ville, code postal.
+              On assume que c'est toujours au Québec. Le code postal doit avoir un format canadien
+              ( H1H 1H1 OU H1H1H1 ).
+        </pre>
+
+    </div>
+</div>
 
 <div id="formulaire">
-    <form action="" method="POST">
-        <div class="form-nom">
-            <label for="nom">Nom : </label>
-            <input type="text" id="nom" required>
-        </div>
-        <div class="form-espece">
-            <label for="espece">l'espèce : </label>
-            <input type="text" id="espece" required>
-        </div>
-        <div class="form-race">
-            <label for="race">la race: </label>
-            <input type="text" id="race" required>
-        </div>
-        <div class="form-age">
-            <label for="age">l'age : </label>
-            <input type="text" id="age" required>
-        </div>
-        <div class="form-description">
-            <label for="description">Description : </label>
-            <input type="text" id="description" required>
-        </div>
+    <form id="form" action="/valider_formulaire" method="POST">
+        <div class="details">
+            <div class="form-nom alignement">
+                <label for="nom">Nom : </label>
+                <input type="text" name="nom" id="nom" required>
+                <span id="span-nom">Entrez un nom valide</span>
+            </div>
+            <div class="form-espece alignement">
+                <label for="espece">l'espèce : </label>
+                <input type="text" name="espece" id="espece" required>
+                <span id="span-espece">Entrez une espece valide</span>
 
-        <div class="form-button">
-            <input type="reset" value="Effacer">
-            <button id="soumettre">Soumettre</button>
-        </div>
+            </div>
+            <div class="form-race alignement">
+                <label for="race">la race: </label>
+                <input type="text" name="race" id="race" required>
+                <span id="span-race">Entrez une race valide</span>
 
+            </div>
+            <div class="form-age alignement">
+                <label for="age">l'age : </label>
+                <input type="text" name="age" id="age" required>
+                <span id="span-age">Entrez un age valide </span>
+
+            </div>
+
+            <div class="form-description alignement">
+                <label for="courriel">Courriel : </label>
+                <input type="text" name="courriel" id="courriel" required>
+                <span id="span-courriel">Entrez un courriel valide </span>
+            </div>
+
+            <div class="form-description alignement">
+                <label for="description">Description : </label>
+                <input type="text" name="description" id="description" required>
+                <span id="span-description">Entrez une description valide</span>
+            </div>
+
+            <div class="form-description alignement">
+                <label for="adresse-civique">Adresse : </label>
+                <div id="formulaire_adresse">
+                    <label for="adresse-civique">Adresse civique, : </label>
+                    <input type="text" name="adresse-civique" id="adresse-civique" required>
+
+                    <label for="ville">Ville : </label>
+                    <input type="text" name="ville" id="ville" required>
+
+                    <label for="cp">Code postale : </label>
+                    <input type="text" name="cp" id="cp" required>
+                </div>
+                <span id="span-adresse">il faut suivre les regles l'adresse en haut!</span>
+            </div>
+
+
+            <div class="form-button alignement">
+                <button type="reset" value="Effacer">Effacer</button>
+                <button id="soumettre">Soumettre</button>
+            </div>
+        </div>
     </form>
 </div>
 
+<script src="/js/script-validation.js"></script>
 {% endblock %}
