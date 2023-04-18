@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="principale">
+<div class="principale" xmlns="http://www.w3.org/1999/html">
     <h2>Voici les regles a suivre pour mettre un animal en adoption</h2>
     <div class="page-animal">
         <pre>Tous les champs du formulaire sont obligatoires;
@@ -21,58 +21,84 @@
         <div class="details">
             <div class="form-nom alignement">
                 <label for="nom">Nom : </label>
-                <input type="text" name="nom" id="nom" required>
+                <input type="text" name="nom" id="nom" value="{{champs_valides['nom']}}" required>
                 <span id="span-nom">Entrez un nom valide</span>
+                {% if 'nom' in erreurs %}
+                <span style="display: block" class="back-end-erreur"> {{ erreurs['nom'] }}</span>
+                {% endif %}
+
             </div>
             <div class="form-espece alignement">
                 <label for="espece">l'espèce : </label>
-                <input type="text" name="espece" id="espece" required>
+                <input type="text" name="espece" id="espece" value="{{champs_valides['espece']}}" required>
                 <span id="span-espece">Entrez une espece valide</span>
-
+                {% if 'espece' in erreurs %}
+                <p class="back-end-erreur"> {{ erreurs['espece'] }}</p>
+                {% endif %}
             </div>
             <div class="form-race alignement">
                 <label for="race">la race: </label>
-                <input type="text" name="race" id="race" required>
+                <input type="text" name="race" id="race" value="{{champs_valides['race']}}" required>
                 <span id="span-race">Entrez une race valide</span>
+
+                {% if 'race' in erreurs %}
+                <p class="back-end-erreur"> {{ erreurs['race'] }}</p>
+                {% endif %}
 
             </div>
             <div class="form-age alignement">
                 <label for="age">l'age : </label>
-                <input type="text" name="age" id="age" required>
+                <input type="text" name="age" id="age" value="{{champs_valides['age']}}" required>
                 <span id="span-age">Entrez un age valide </span>
+                {% if 'age' in erreurs %}
+                <p class="back-end-erreur"> {{ erreurs['age'] }}</p>
+                {% endif %}
 
             </div>
 
             <div class="form-description alignement">
                 <label for="courriel">Courriel : </label>
-                <input type="text" name="courriel" id="courriel" required>
+                <input type="text" name="courriel" id="courriel" value="{{champs_valides['courriel']}}" required>
                 <span id="span-courriel">Entrez un courriel valide </span>
+
+                {% if 'courriel' in erreurs %}
+                <p class="back-end-erreur"> {{ erreurs['courriel'] }}</p>
+                {% endif %}
             </div>
 
             <div class="form-description alignement">
                 <label for="description">Description : </label>
-                <input type="text" name="description" id="description" required>
+                <input type="text" name="description" id="description" value="{{champs_valides['description']}}"
+                       required>
                 <span id="span-description">Entrez une description valide</span>
+                {% if 'description' in erreurs %}
+                <p class="back-end-erreur"> {{ erreurs['description'] }}</p>
+                {% endif %}
             </div>
 
             <div class="form-description alignement">
                 <label for="adresse-civique">Adresse : </label>
                 <div id="formulaire_adresse">
                     <label for="adresse-civique">Adresse civique, : </label>
-                    <input type="text" name="adresse-civique" id="adresse-civique" required>
+                    <input type="text" name="adresse-civique" id="adresse-civique"
+                           value="{{champs_valides['adr_civique']}}" required>
 
                     <label for="ville">Ville : </label>
-                    <input type="text" name="ville" id="ville" required>
+                    <input type="text" name="ville" id="ville" value="{{champs_valides['ville']}}" required>
 
                     <label for="cp">Code postale : </label>
-                    <input type="text" name="cp" id="cp" required>
+                    <input type="text" name="cp" id="cp" value="{{champs_valides['cp']}}" required>
                 </div>
                 <span id="span-adresse">il faut suivre les regles l'adresse en haut!</span>
+
+                {% if 'adresse' in erreurs %}
+                <p class="back-end-erreur"> {{ erreurs['adresse'] }}</p>
+                {% endif %}
             </div>
 
 
             <div class="form-button alignement">
-                <button type="reset" value="Effacer">Effacer</button>
+                <button type="reset" id="effacer" value="Effacer">Effacer</button>
                 <button id="soumettre">Soumettre</button>
             </div>
         </div>

@@ -20,18 +20,12 @@ from flask import request
 from flask import redirect
 from werkzeug.exceptions import abort
 from database import Database
+from animal import Animal
+
+erreur = {}
+champs_valides = {}
 
 app = Flask(__name__, static_url_path="", static_folder="static")
-
-nom = ""
-espece = ""
-race = ""
-age = ""
-courriel = ""
-description = ""
-adr_civique = ""
-ville = ""
-cp = ""
 
 
 def get_db():
@@ -61,6 +55,7 @@ def get_animaux_index():
 
 @app.route('/')
 def index():
+    erreur.clear()
     return render_template('index.html', animaux=get_animaux_index())
 
 
@@ -99,7 +94,9 @@ def afficher_animal(nom_animal):
 
 @app.route('/ajouter_animal')
 def ajouter_animal():
-    return render_template('ajouter_animal.html')
+    print('erreur : ', erreur)
+    print('valide :', champs_valides)
+    return render_template('ajouter_animal.html', erreurs=erreur, champs_valides=champs_valides)
 
 
 @app.route('/valider_formulaire', methods=['POST'])
@@ -110,69 +107,116 @@ def valider_form():
     age = request.form['age']
     courriel = request.form['courriel']
     description = request.form['description']
-    adr_civique = request.form['adresse-civique']
+    adresse = request.form['adresse-civique']
     ville = request.form['ville']
     cp = request.form['cp']
 
-    remplire_bd()
+    animal = Animal(nom, espece, race, age, description, courriel, adresse, ville, cp)
 
-    return redirect('/remplir_BD')
+    if remplire_bd(animal):
+        erreur.clear()
+        champs_valides.clear()
+        return redirect('/{}'.format(animal.animal_nom))
+
+    return redirect('/ajouter_animal')
 
 
-def valider_nom():
-    if "," not in nom and len(nom) < 25:
+def valider_nom(nom):
+    print(len(nom))
+
+    if "," not in nom and 3 < len(nom) < 20:
+        champs_valides['nom'] = nom
         return True
+
+    erreur["nom"] = "Entrez un nom valide"
+
     return False
 
 
-def valider_espece():
-    if "," not in espece and len(espece) < 25:
+def valider_espece(espece):
+    if "," not in espece and 0 < len(espece) < 25:
+        champs_valides['espece'] = espece
         return True
+
+    erreur["espece"] = "Entrez une espece valide"
+
     return False
 
 
-def valider_race():
-    if "," not in race and len(race) < 25:
+def valider_race(race):
+    if "," not in race and 0 < len(race) < 25:
+        champs_valides['race'] = race
         return True
+
+    erreur["race"] = "Entrez une race valide"
     return False
 
 
-def valider_age():
-    if "," not in age and len(age) < 25 and type(age) == int and 0 < age < 29:
-        return True
+def valider_age(age):
+    if age.isdigit():
+        age = int(age)
+        if 0 <= age <= 30:
+            champs_valides['age'] = age
+            return True
+
+    erreur["age"] = "Entrez un age valide"
     return False
 
 
-def valider_courriel():
+def valider_courriel(courriel):
     regex = re.compile("^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$")
     if regex.match(courriel):
+        champs_valides['courriel'] = courriel
         return True
     else:
+        erreur["courriel"] = "Entrez un courriel valide"
         return False
 
 
-def valider_description():
-    if "," not in description and len(description) < 500:
+def valider_description(description):
+    if "," not in description and 0 < len(description) < 500:
+        champs_valides['description'] = description
         return True
     else:
+        erreur["description"] = "Entrez une description valide"
+
         return False
 
 
-def valider_adresse():
-    if "," in adr_civique or ville or cp:
+def valider_adresse(adr_civique, ville, cp):
+    if ',' in adr_civique or ',' in ville or ',' in cp:
         return False
 
     regex = re.compile("^[a-zA-Z]\d[a-zA-Z]\s?\d[a-zA-Z]\d$")
     if regex.match(cp):
+        champs_valides['adr_civique'] = adr_civique
+        champs_valides['ville'] = ville
+        champs_valides['cp'] = cp
         return True
 
+    erreur["adresse"] = "Entrez une adresse valide"
     return False
 
 
-def remplire_bd():
-    if valider_nom(nom) and valider_espece(espece) and valider_race(race) and valider_age(age) \
-            and valider_courriel(courriel) and valider_adresse(adr_civique, ville, cp):
-        print('we gucci')
+def verifier_donnes(animal):
+    if valider_nom(animal.animal_nom) & valider_espece(animal.animal_espece) & valider_race(animal.animal_race) \
+            & valider_age(animal.animal_age) & valider_description(animal.animal_description) \
+            & valider_courriel(animal.animal_courriel) \
+            & valider_adresse(animal.animal_adresse, animal.animal_ville, animal.animal_cp):
+        return True
+    return False
+
+
+def remplire_bd(animal):
+    erreur.clear()
+    champs_valides.clear()
+    if verifier_donnes(animal):
+        get_db().add_animal(animal.animal_nom, animal.animal_espece, animal.animal_race, animal.animal_age,
+                            animal.animal_description, animal.animal_courriel, animal.animal_adresse,
+                            animal.animal_adresse, animal.animal_cp)
+
+        return True
+    return False
 
 
 @app.errorhandler(404)
