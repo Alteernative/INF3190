@@ -64,7 +64,7 @@ def donnees_recherche():
     resultat = []
     achercher = request.form['recherche']
     if len(achercher) == 0:
-        return redirect('/')
+        return '', 204
     reg = re.compile(achercher, re.IGNORECASE)
     for animal in get_db().get_animaux():
         if re.search(reg, animal.get('nom')) or re.findall(reg, animal.get('espece')) \
