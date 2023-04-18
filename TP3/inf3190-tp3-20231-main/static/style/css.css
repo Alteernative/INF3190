@@ -191,6 +191,7 @@ img {
 .alignement {
     margin: 10px;
     display: flex;
+    align-items: center;
     gap: 2rem;
 }
 
