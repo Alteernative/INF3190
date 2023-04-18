@@ -274,7 +274,6 @@ function valider_ville() {
 
 document.getElementById('formulaire_adresse').addEventListener('change', function () {
 
-
     valider_adresse_civique();
     valider_ville()
     valider_CP()

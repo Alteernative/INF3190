@@ -131,13 +131,13 @@ https://copy-paste-css.com/
     transition: background-color .24s, box-shadow .24s;
 }
 
-
 .button:hover {
-    box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 12%) 0px 1px 1px 0px,
-    rgb(210, 210, 210) 0px 0px 0px 1px, rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-    rgb(60 66 87 / 8%) 0px 3px 9px 0px, rgb(60 66 87 / 8%) 0px 2px 5px 0px;
+    background-color: #2a353d;
 }
 
+.button:active{
+    background-color: #69854e;
+}
 
 .page-animal {
     display: flex;
