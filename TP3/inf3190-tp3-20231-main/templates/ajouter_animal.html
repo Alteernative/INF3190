@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="principale" xmlns="http://www.w3.org/1999/html">
+<div class="principale">
     <h2>Voici les regles a suivre pour mettre un animal en adoption</h2>
     <div class="page-animal">
         <pre>Tous les champs du formulaire sont obligatoires;
@@ -12,7 +12,6 @@
               On assume que c'est toujours au Québec. Le code postal doit avoir un format canadien
               ( H1H 1H1 OU H1H1H1 ).
         </pre>
-
     </div>
 </div>
 
@@ -26,7 +25,6 @@
                 {% if 'nom' in erreurs %}
                 <span style="display: block" class="back-end-erreur"> {{ erreurs['nom'] }}</span>
                 {% endif %}
-
             </div>
             <div class="form-espece alignement">
                 <label for="espece">l'espèce : </label>
@@ -44,7 +42,6 @@
                 {% if 'race' in erreurs %}
                 <p class="back-end-erreur"> {{ erreurs['race'] }}</p>
                 {% endif %}
-
             </div>
             <div class="form-age alignement">
                 <label for="age">l'age : </label>
@@ -53,14 +50,12 @@
                 {% if 'age' in erreurs %}
                 <p class="back-end-erreur"> {{ erreurs['age'] }}</p>
                 {% endif %}
-
             </div>
 
             <div class="form-description alignement">
                 <label for="courriel">Courriel : </label>
                 <input type="text" name="courriel" id="courriel" value="{{champs_valides['courriel']}}" required>
                 <span id="span-courriel">Entrez un courriel valide </span>
-
                 {% if 'courriel' in erreurs %}
                 <p class="back-end-erreur"> {{ erreurs['courriel'] }}</p>
                 {% endif %}
@@ -82,21 +77,16 @@
                     <label for="adresse-civique">Adresse civique, : </label>
                     <input type="text" name="adresse-civique" id="adresse-civique"
                            value="{{champs_valides['adr_civique']}}" required>
-
                     <label for="ville">Ville : </label>
                     <input type="text" name="ville" id="ville" value="{{champs_valides['ville']}}" required>
-
                     <label for="cp">Code postale : </label>
                     <input type="text" name="cp" id="cp" value="{{champs_valides['cp']}}" required>
                 </div>
                 <span id="span-adresse">il faut suivre les regles l'adresse en haut!</span>
-
                 {% if 'adresse' in erreurs %}
                 <p class="back-end-erreur"> {{ erreurs['adresse'] }}</p>
                 {% endif %}
             </div>
-
-
             <div class="form-button alignement">
                 <button type="reset" id="effacer" value="Effacer">Effacer</button>
                 <button id="soumettre">Soumettre</button>
